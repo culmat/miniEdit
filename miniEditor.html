@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>miniEditor</title>
+</head>
+<body>
+	<textarea name="content" id="editor"></textarea>
+	<button onclick="sendData('preview')">Preview</button>
+	<button onclick="sendData('save')">Save</button>
+	<script
+		src="https://cdn.ckeditor.com/ckeditor5/1.0.0-alpha.2/classic/ckeditor.js"></script>
+	<script>
+  
+  
+  function receiveMessage(event) {
+	  editor.setData( event.data);
+  }
+
+  function sendData(cmd) {
+	  console.log(cmd)
+	  window.opener.postMessage({"cmd":cmd, "data":editor.getData()} , "*"); 
+  }
+
+  var editor;
+  window.addEventListener("message", receiveMessage, false);	
+	 ClassicEditor
+	     .create( document.querySelector( '#editor' ) )
+	     .then( ed => {
+	     	window.opener.postMessage({"cmd":"init"}, "*");
+	     	editor = ed;
+			 } )
+	     .catch( error => {
+	         console.error( error );
+	     } );
+	</script>
+</body>
+</html>
