@@ -4,4 +4,4 @@ Optionally you can use a storage plugin to save your work. (TDB docu for storage
 
 Demo https://culmat.github.io/miniEdit/demo/localstore.html
 
-To edit https://culmat.github.io/miniEdit/demo/localstore.html?edit
+To edit double click the paragraph https://culmat.github.io/miniEdit/demo/localstore.html?edit
